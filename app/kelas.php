@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class kelas extends Model
 {
     protected $table ="kelas";
+    protected $fillable = ['kode_kls','nama','total_siswa'];
 }
