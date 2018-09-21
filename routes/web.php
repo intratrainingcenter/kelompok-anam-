@@ -28,7 +28,12 @@ Route::get('/Dashboard', function(){
 });
 Route::prefix('school')->group(function(){
   Route::get('/siswa','schoolController@siswa')->name('school.siswa');
-  Route::get('/kelas','schoolController@kelas')->name('school.kelas');
+  Route::prefix('kelas')->group(function(){
+    Route::get('/','ClassController@index')->name('kelas.index');
+    Route::Post('/add','ClassController@store')->name('kelas.add');
+    Route::Post('/update','ClassController@update')->name('kelas.update');
+    Route::delete('/delete','ClassController@delete')->name('kelas.delete');
+  });
   Route::get('/piket','schoolController@piket')->name('school.piket');
   Route::get('/mata_pelajaran','schoolController@mata_pelajaran')->name('school.mata_pelajaran');
   Route::get('/absen','schoolController@absen')->name('school.absen');
