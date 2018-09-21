@@ -65,9 +65,9 @@
               @method('POST')
               @csrf
              {!! Form::label('email', 'Name Class') !!}
-             {!! Form::text('name_class', '', ['class' => 'form-control']) !!}
-             {!! Form::label('email', 'E-Mail Address') !!}
-             {!! Form::number('total_student', '',['class' => 'form-control']) !!}
+             {!! Form::text('name_class', '', ['class' => 'form-control', 'placeholder' => 'Name Class']) !!}
+             {!! Form::label('many_students', 'Many Students') !!}
+             {!! Form::number('total_student', '',['class' => 'form-control' ,'placeholder' => 'Many Students']) !!}
         </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
@@ -92,7 +92,7 @@
           {!! Form::open(['route' => 'kelas.update']) !!}
               @method('POST')
               @csrf
-              <input type="hidden" name="id_class" class="id_class">
+             {!! Form::hidden('id_class', '', ['class' => 'form-control id_class']) !!}
              {!! Form::label('email', 'Name Class') !!}
              {!! Form::text('name_class', '', ['class' => 'form-control name_class']) !!}
              {!! Form::label('email', 'E-Mail Address') !!}
@@ -122,7 +122,7 @@
           {!! Form::open(['route' => 'kelas.delete']) !!}
               @method('DELETE')
               @csrf
-              <input type="hidden" name="id_class" id="id_class">
+              {!! Form::hidden('id_class', '', ['class' => 'form-control', 'id' => 'id_class']) !!}
               <span>Anda yakin mau menghapus kelas</span> (<span id="name_class"></span>) ?
         </div>
           <div class="modal-footer">

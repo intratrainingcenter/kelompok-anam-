@@ -35,6 +35,9 @@ Route::prefix('school')->group(function(){
     Route::delete('/delete','ClassController@delete')->name('kelas.delete');
   });
   Route::get('/piket','schoolController@piket')->name('school.piket');
-  Route::get('/mata_pelajaran','schoolController@mata_pelajaran')->name('school.mata_pelajaran');
+  Route::prefix('mata_pelajaran')->group(function(){
+    Route::get('/','SubjectsController@index')->name('mata_pelajaran.index');
+    Route::post('/add','SubjectsController@create')->name('mata_pelajaran.add');
+  });
   Route::get('/absen','schoolController@absen')->name('school.absen');
 });
