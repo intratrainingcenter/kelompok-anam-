@@ -38,6 +38,8 @@ Route::prefix('school')->group(function(){
   Route::prefix('mata_pelajaran')->group(function(){
     Route::get('/','SubjectsController@index')->name('mata_pelajaran.index');
     Route::post('/add','SubjectsController@create')->name('mata_pelajaran.add');
+    Route::post('/update','SubjectsController@update')->name('mata_pelajaran.update');
+    Route::delete('/delete','SubjectsController@delete')->name('mata_pelajaran.delete');
   });
   Route::get('/absen','schoolController@absen')->name('school.absen');
 });

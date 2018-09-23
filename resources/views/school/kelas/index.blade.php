@@ -18,6 +18,31 @@
          </div>
          <!-- /.box-header -->
          <div class="box-body">
+            @if(session('save')) 
+             <div class="alert alert-info alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                </button>
+                Data Kelas <strong>{{session('save')}}</strong> Berhasil ditambahkan 
+              </div>
+            @elseif(session('update'))
+             <div class="alert alert-info alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                </button>
+                Data Kelas <strong>{{session('update')}}</strong> Berhasil diupdate 
+              </div>
+            @elseif(session('delete'))
+             <div class="alert alert-info alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                </button>
+                Data Kelas <strong>{{session('delete')}}</strong> Berhasil diHapus 
+              </div>
+            @elseif(session('warning'))
+             <div class="alert alert-warning alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                </button>
+               Save Gagal Data Kelas <strong>{{session('warning')}}</strong> Sudah Ada
+              </div>
+            @endif
            <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
            <table id="example1" class="table table-bordered table-striped">
              <thead>
@@ -123,7 +148,8 @@
               @method('DELETE')
               @csrf
               {!! Form::hidden('id_class', '', ['class' => 'form-control', 'id' => 'id_class']) !!}
-              <span>Anda yakin mau menghapus kelas</span> (<span id="name_class"></span>) ?
+              {!! Form::hidden('name_class', '', ['class' => 'form-control', 'id' => 'name_class']) !!}
+              <span>Anda yakin mau menghapus kelas</span> (<span class="name_class"></span>) ?
         </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
