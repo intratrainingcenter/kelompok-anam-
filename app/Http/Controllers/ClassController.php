@@ -15,13 +15,18 @@ class ClassController extends Controller
     }
     public function store(Request $request)
     {
-      // dd($request->all());
-      $store = kelas::create([
-        'kode_kls'  =>str_random(5),
-        'nama'      =>$request->name_class,
-        'total_siswa'=>$request->total_student,
-      ]);
-      return redirect('school/kelas');
+      $validation = kelas::where('nama','=',$request->name_class)->first();
+      if ($validation == null) {
+            
+          $store = kelas::create([
+            'kode_kls'  =>str_random(5),
+            'nama'      =>$request->name_class,
+            'total_siswa'=>$request->total_student,
+          ]);
+          return redirect('school/kelas')->with('save',$request->name_class);
+      }else{
+          return redirect('school/kelas')->with('warning',$request->name_class);
+      }
     }
     public function update(Request $request)
     {
@@ -30,13 +35,13 @@ class ClassController extends Controller
         'nama'      =>$request->name_class,
         'total_siswa'=>$request->total_student,
       ]);
-        return redirect('school/kelas');
+        return redirect('school/kelas')->with('update',$request->name_class);
     }
     public function delete(Request $request)
     {
       $delete = kelas::where('kode_kls', $request->id_class);
       $delete->delete();
 
-      return redirect('school/kelas');
+      return redirect('school/kelas')->with('delete',$request->name_class);
     }
 }

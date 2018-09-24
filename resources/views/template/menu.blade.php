@@ -25,22 +25,10 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
       <li class="active"><a href="/Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-institution"></i>
-          <span>Page Sekolah</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="{{Route('school.siswa')}}"><i class="fa fa-user"></i> Siswa</a></li>
-          <li><a href="{{Route('kelas.index')}}"><i class="fa fa-table"></i> Kelas</a></li>
-          <li><a href="{{Route('school.mata_pelajaran')}}"><i class="fa fa-list-alt"></i> Mata pelajaran</a></li>
-          <li><a href="{{Route('school.absen')}}"><i class="fa fa-line-chart"></i>Absen</a></li>
-          <li><a href="{{Route('school.piket')}}"><i class="fa fa-file-powerpoint-o"></i>Piket</a></li>
-
-        </ul>
-      </li>
+      <li><a href="{{Route('school.siswa')}}"><i class="fa fa-user"></i> Siswa</a></li>
+      <li><a href="{{Route('kelas.index')}}"><i class="fa fa-table"></i> Kelas</a></li>
+      <li><a href="{{Route('mata_pelajaran.index')}}"><i class="fa fa-list-alt"></i> Mata pelajaran</a></li>
+      <li><a href="{{Route('absen.index')}}"><i class="fa fa-line-chart"></i>Absen</a></li>
+      <li><a href="{{Route('school.piket')}}"><i class="fa fa-file-powerpoint-o"></i>Piket</a></li>
     </ul>
   </section>

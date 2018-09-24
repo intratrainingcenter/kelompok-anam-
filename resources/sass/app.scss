@@ -7,6 +7,16 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import '~template/bower_components/bootstrap/dist/css/bootstrap.min.css';
+@import '~template/bower_components/font-awesome/css/font-awesome.min.css';
+@import '~template/bower_components/Ionicons/css/ionicons.min.css';
+@import '~template/dist/css/AdminLTE.min.css';
+@import '~template/dist/css/skins/_all-skins.min.css';
+@import '~template/bower_components/morris.js/morris.css';
+@import '~template/bower_components/jvectormap/jquery-jvectormap.css';
+@import '~template/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css';
+@import '~template/bower_components/bootstrap-daterangepicker/daterangepicker.css';
+@import '~template/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css';
 
 .navbar-laravel {
   background-color: #fff;
