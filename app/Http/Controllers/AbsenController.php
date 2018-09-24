@@ -26,8 +26,11 @@ class AbsenController extends Controller
     public function create(Request $request)
     {
       $date = date('Ymd');
+      $milliseconds = round(microtime(true));
+      $code =('KA_'.$date.$milliseconds);
+       dd(date('s'));  
       $create = absensi::create([
-        'kode_absensi'  =>$date.str_random(2),
+        'kode_absensi'  =>$code,
         'NIS'           =>'234wdf',
         'tanggal'       =>$request->date,
         'absen'         =>$request->absensi,

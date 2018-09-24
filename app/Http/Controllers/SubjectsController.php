@@ -19,6 +19,7 @@ class SubjectsController extends Controller
       $data = array(
         'study' => mata_pelajaran::with('kelas')->get(),
         'class' => $select,
+        'kelas' =>kelas::all(),
       );
 
       return view('school.mata_pelajaran.index',$data);

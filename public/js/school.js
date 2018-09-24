@@ -3,7 +3,7 @@
     $(document).find('.alert').fadeOut('slow');
   },3000);
 
-  // $(document).find('#example1').DataTable();
+  $(document).find('#example1').DataTable();
   function update(id,name,student)
   {
     $(document).find('.id_class').val(id);
@@ -22,8 +22,11 @@
 
   function update_pelajaran(kode,kls,guru,nama)
   {
+      var option ="";
+      
     $(document).find('.kode').val(kode);
-    $(document).find('.kelas').val(kls);
+      option+="<option value='"+kls+"'>"+kls+"</option>"
+    $(document).find('.kelas').append(option);
     $(document).find('.guru').val(guru);
     $(document).find('.pelajaran').val(nama);
   }

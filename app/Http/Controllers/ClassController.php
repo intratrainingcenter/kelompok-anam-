@@ -17,9 +17,11 @@ class ClassController extends Controller
     {
       $validation = kelas::where('nama','=',$request->name_class)->first();
       if ($validation == null) {
-            
+          $date = date('Ymd');
+          $seconds = date('s');
+          $code =('KLS_'.$date.$seconds);
           $store = kelas::create([
-            'kode_kls'  =>str_random(5),
+            'kode_kls'  =>$code,
             'nama'      =>$request->name_class,
             'total_siswa'=>$request->total_student,
           ]);
