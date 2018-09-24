@@ -15,7 +15,7 @@ class SubjectsController extends Controller
       foreach($departments as $department){
           $select[$department->kode_kls] = $department->nama;
       }
-      
+
       $data = array(
         'study' => mata_pelajaran::with('kelas')->get(),
         'class' => $select,
@@ -25,18 +25,27 @@ class SubjectsController extends Controller
     }
     public function create(Request $request)
     {
-      // dd($request->all()); 
-      $save = mata_pelajaran::create([
-        'kode_pelajaran'  => $request->kode_pelajaran,
-        'kode_kls'        => $request->class,
-        'nama_guru'       => $request->nama_guru,
-        'nama_pelajaran'  => $request->pelajaran,
-      ]);
-      return redirect('school/mata_pelajaran')->with('save',$request->pelajaran);
+      $validation = mata_pelajaran::where('kode_pelajaran','=',$request->kode_pelajaran)->first();
+      if ($validation == null) {
+          $save = mata_pelajaran::create([
+            'kode_pelajaran'  => $request->kode_pelajaran,
+            'kode_kls'        => $request->class,
+            'nama_guru'       => $request->nama_guru,
+            'nama_pelajaran'  => $request->pelajaran,
+          ]);
+          return redirect('school/mata_pelajaran')->with('save',$request->pelajaran);
+        }else{
+          return redirect('school/mata_pelajaran')->with('warning',$request->kode_pelajaran);
+        }
     }
     public function update(Request $request)
     {
       // dd($request->all());
+      // $validatedData = $request->validate([
+      //     'kode_kls' => 'required',
+      //     'nama_guru' => 'required',
+      //     'nama_pelajaran' => 'required',
+      // ]);
       $find = mata_pelajaran::where('kode_pelajaran','=',$request->kode_pelajaran)->first();
       $find->update([
         'kode_kls'        => $request->class,

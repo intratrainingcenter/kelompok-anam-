@@ -18,23 +18,23 @@
          </div>
          <!-- /.box-header -->
          <div class="box-body">
-            @if(session('save')) 
+            @if(session('save'))
              <div class="alert alert-info alert-dismissible fade in" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
                 </button>
-                Data Kelas <strong>{{session('save')}}</strong> Berhasil ditambahkan 
+                Data Kelas <strong>{{session('save')}}</strong> Berhasil ditambahkan
               </div>
             @elseif(session('update'))
              <div class="alert alert-info alert-dismissible fade in" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
                 </button>
-                Data Kelas <strong>{{session('update')}}</strong> Berhasil diupdate 
+                Data Kelas <strong>{{session('update')}}</strong> Berhasil diupdate
               </div>
             @elseif(session('delete'))
              <div class="alert alert-info alert-dismissible fade in" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
                 </button>
-                Data Kelas <strong>{{session('delete')}}</strong> Berhasil diHapus 
+                Data Kelas <strong>{{session('delete')}}</strong> Berhasil diHapus
               </div>
             @elseif(session('warning'))
              <div class="alert alert-warning alert-dismissible fade in" role="alert">
@@ -44,7 +44,7 @@
               </div>
             @endif
            <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
-           <table id="example1" class="table table-bordered table-striped">
+           <table id="example1" class="table table-bordered table-striped" >
              <thead>
              <tr>
                <th>No</th>
@@ -65,7 +65,7 @@
                    <td>
                      {{-- <a href="#" class="btn btn-info" title="Detail data"><i class="fa fa-info"></i></a> --}}
                      <a onclick="update('{{$key->kode_kls}}','{{$key->nama}}','{{$key->total_siswa}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
-                     <a onclick="destroy('{{$key->kode_kls}}','{{$key->nama}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
+                     <a onclick="delete_kelas('{{$key->kode_kls}}','{{$key->nama}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
                    </td>
                  </tr>
                @endforeach
@@ -141,7 +141,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Update class</h4>
+          <h4 class="modal-title">Delete class</h4>
         </div>
         <div class="modal-body">
           {!! Form::open(['route' => 'kelas.delete']) !!}

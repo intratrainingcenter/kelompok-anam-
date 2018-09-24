@@ -41,5 +41,9 @@ Route::prefix('school')->group(function(){
     Route::post('/update','SubjectsController@update')->name('mata_pelajaran.update');
     Route::delete('/delete','SubjectsController@delete')->name('mata_pelajaran.delete');
   });
-  Route::get('/absen','schoolController@absen')->name('school.absen');
+  Route::prefix('absen')->group(function(){
+    Route::get('/','AbsenController@index')->name('absen.index');
+    Route::post('/add','AbsenController@create')->name('absen.add');
+    Route::delete('/delete','AbsenController@delete')->name('absen.delete');
+  });
 });

@@ -28,7 +28,7 @@
       <li><a href="{{Route('school.siswa')}}"><i class="fa fa-user"></i> Siswa</a></li>
       <li><a href="{{Route('kelas.index')}}"><i class="fa fa-table"></i> Kelas</a></li>
       <li><a href="{{Route('mata_pelajaran.index')}}"><i class="fa fa-list-alt"></i> Mata pelajaran</a></li>
-      <li><a href="{{Route('school.absen')}}"><i class="fa fa-line-chart"></i>Absen</a></li>
+      <li><a href="{{Route('absen.index')}}"><i class="fa fa-line-chart"></i>Absen</a></li>
       <li><a href="{{Route('school.piket')}}"><i class="fa fa-file-powerpoint-o"></i>Piket</a></li>
     </ul>
   </section>
