@@ -71,8 +71,8 @@
                   <td>{{$key->total_siswa}}</td>
                   <td>
                     {{-- <a href="#" class="btn btn-info" title="Detail data"><i class="fa fa-info"></i></a> --}}
-                    <a onclick="update('{{$key->kode_kls}}','{{$key->nama}}','{{$key->wali_kelas}}','{{$key->total_siswa}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
-                    <a onclick="delete_kelas('{{$key->kode_kls}}','{{$key->nama}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
+                    <a onclick="update_class('{{$key->kode_kls}}','{{$key->nama}}','{{$key->wali_kelas}}','{{$key->total_siswa}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
+                    <a onclick="delete_class('{{$key->kode_kls}}','{{$key->nama}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
                   </td>
                 </tr>
               @endforeach
@@ -89,7 +89,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Add class</h4>
+          <h4 class="modal-title">Form Add</h4>
         </div>
         <div class="modal-body">
           {!! Form::open(['route' => 'kelas.add']) !!}
@@ -99,7 +99,7 @@
             {!! Form::text('name_class', '', ['class' => 'form-control', 'placeholder' => 'Nama Kelas','required']) !!}
              {!! Form::label('email', 'Wali Kelas') !!}
              {!! Form::text('wali_kelas', '', ['class' => 'form-control', 'placeholder' => 'Nama Wali Kelas','required']) !!}
-             {!! Form::label('', 'Banyak Siswa') !!}
+             {!! Form::label('', 'Total Siswa') !!}
              {!! Form::number('total_student', '',['class' => 'form-control' ,'placeholder' => 'Banyak Siswa','required']) !!}
         </div>
           <div class="modal-footer">
@@ -119,14 +119,14 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Update class</h4>
+          <h4 class="modal-title">Form Update</h4>
         </div>
         <div class="modal-body">
           {!! Form::open(['route' => 'kelas.update']) !!}
               @method('POST')
               @csrf
              {!! Form::hidden('id_class', '', ['class' => 'form-control id_class']) !!}
-             {!! Form::label('email', 'Name Class') !!}
+             {!! Form::label('email', 'Nama Kelas') !!}
              {!! Form::text('name_class', '', ['class' => 'form-control name_class','required']) !!}
              {!! Form::label('email', 'Wali Kelas') !!}
              {!! Form::text('wali_kelas', '', ['class' => 'form-control wali_kelas', 'placeholder' => 'Nama Wali Kelas','required']) !!}
@@ -151,7 +151,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Delete class</h4>
+          <h4 class="modal-title">Form Delete</h4>
         </div>
         <div class="modal-body">
           {!! Form::open(['route' => 'kelas.delete']) !!}

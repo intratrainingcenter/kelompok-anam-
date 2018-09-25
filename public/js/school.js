@@ -4,8 +4,9 @@
   },3000);
   //pemanggilan DataTable di id
   $(document).find('#example1').DataTable();
-  //JS class
-  function update(id,name,wali_kelas,student)
+
+  //JS kelas
+  function update_class(id,name,wali_kelas,student)
   {
     $(document).find('.id_class').val(id);
     $(document).find('.name_class').val(name);
@@ -13,7 +14,7 @@
     $(document).find('.total_student').val(student);
   }
 
-  function delete_kelas(id,name_class)
+  function delete_class(id,name_class)
   {
     $(document).find('#id_class').val(id);
     $(document).find('#name_class').val(name_class);
@@ -21,21 +22,41 @@
   }
 
   //JS pelajaran
-
-  function update_pelajaran(kode,kls,guru,nama)
+  //update pelajaran
+  function update_lessons(code,code_kls,kls,guru,nama)
   {
       var option ="";
+      var option_value ="";
 
-    $(document).find('.kode').val(kode);
+    $(document).find('.kode').val(code);
 
-    //penambahan option pada select
-      option+="<option value='"+kls+"'>"+kls+"</option><option value=''>Pilih Kelas</option>"
+    //penggunaan ajax untuk menampilakan data kelas
+    $.ajax({
+            dataType    : "json",
+            data        : "GET",
+            url         : location.origin+"/school/mata_pelajaran/callajax"
+        }).done(function (data) {
 
-    $(document).find('.kelas').append(option);
+            option_value+="<option value='"+code_kls+"'>"+kls+"</option><option value=''>Pilih Kelas</option>"
+            
+            //foreach data kelas
+            $.each(data, function(index,result){
+              option+="<option value='"+result.kode_kls+"'>"+result.nama+"</option>";
+            });
+
+            //penambahan option pada select sesuai find class
+          $(document).find('.kelas').html(option_value+option);
+        //pemberihatuan jika reques gagal
+        }).fail(function (data) {
+          console.log(data);
+          console.log("error");
+        });
+
     $(document).find('.guru').val(guru);
     $(document).find('.pelajaran').val(nama);
   }
-  function destroy(kode,nama_palajaran)
+  //hapus pelajaran
+  function delete_lessons(kode,nama_palajaran)
   {
     $(document).find('#kode_pelajaran').val(kode);
     $(document).find('.nama_palajaran').val(nama_palajaran);
@@ -43,7 +64,8 @@
   }
 
   //JS Absen
-  function update_absensi(kode,siswa,absen,keterangan)
+  //update absensi
+  function update_absent(kode,siswa,absen,keterangan)
   {
     var option="";
     $(document).find('#kode_absen').val(kode);
@@ -60,13 +82,17 @@
     $(document).find('#absen').html(option);
     $(document).find('.keterangan').val(keterangan);
   }
-  function destroy_absensi(kode,siswa)
+  //delete absensi
+  function delete_absent(kode,siswa)
   {
     $(document).find('#kode_absensi').val(kode);
     $(document).find('#siswa').text(siswa);
     $(document).find('.siswa').val(siswa);
 
   }
+
+  //JS Siswa
+  // update siswa
   function update_siswa( id,nama,tempat_lahir,tanggal_lahir,jenis_kelamin,alamat,agama){
 
     $(document).find('#id_siswa').val(id);
@@ -77,6 +103,7 @@
     $(document).find('#home_town').val(alamat);
     $(document).find('#religion').val(agama);
   }
+  // delete siswa
   function destroy_siswa(nis,nama){
 
     $(document).find('#NIS').val(nis);

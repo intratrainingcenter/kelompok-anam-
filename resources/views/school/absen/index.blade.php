@@ -71,8 +71,8 @@
                      <td>{{$key->keterangan}}</td>
                      <td>
                        {{-- <a href="#" class="btn btn-info" title="Detail data"><i class="fa fa-info"></i></a> --}}
-                       <a onclick="update_absensi('{{$key->kode_absensi}}','{{$key->siswa->nama}}','{{$key->absen}}','{{$key->keterangan}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
-                       <a onclick="destroy_absensi('{{$key->kode_absensi}}','{{$key->siswa->nama}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
+                       <a onclick="update_absent('{{$key->kode_absensi}}','{{$key->siswa->nama}}','{{$key->absen}}','{{$key->keterangan}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
+                       <a onclick="delete_absent('{{$key->kode_absensi}}','{{$key->siswa->nama}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
                      </td>
                    </tr>
                  @endforeach
@@ -90,14 +90,14 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Add Absensi</h4>
+            <h4 class="modal-title">Form Add</h4>
           </div>
           <div class="modal-body">
             {!! Form::open(['route' => 'absen.add']) !!}
                 @method('POST')
                 @csrf
                {!! Form::label('', 'Siswa') !!}
-               {!! Form::select('siswa',$siswa ,null,['class' => 'form-control siswa', 'placeholder' => 'Pilih Siswa',]) !!}
+               {!! Form::select('siswa',$siswa ,null,['class' => 'form-control siswa', 'placeholder' => 'Pilih Siswa']) !!}
                {!! Form::label('', 'Tanggal') !!}
                {!! Form::date('date', \Carbon\Carbon::now(),['class' => 'form-control tanggal']) !!}
                {!! Form::label('', 'Absensi') !!}
@@ -123,7 +123,7 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Update Absensi</h4>
+            <h4 class="modal-title">Form Update</h4>
           </div>
           <div class="modal-body">
             {!! Form::open(['route' => 'absen.update']) !!}
@@ -154,7 +154,7 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Delete Absensi </h4>
+            <h4 class="modal-title">Form Delete </h4>
           </div>
           <div class="modal-body">
             {!! Form::open(['route' => 'absen.delete']) !!}

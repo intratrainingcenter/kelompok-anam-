@@ -40,7 +40,6 @@ class AbsenController extends Controller
     }
     public function update(Request $request)
     {
-        // dd($request->all());
         $update = absensi::where('kode_absensi','=',$request->kode_absen)->with('siswa')->first();
         $update->update([
           'absen' =>$request->absensi,

@@ -40,6 +40,7 @@ Route::prefix('school')->group(function(){
   Route::get('/piket','schoolController@piket')->name('school.piket');
   Route::prefix('mata_pelajaran')->group(function(){
     Route::get('/','SubjectsController@index')->name('mata_pelajaran.index');
+    Route::get('/callajax','SubjectsController@callajax');
     Route::post('/add','SubjectsController@create')->name('mata_pelajaran.add');
     Route::post('/update','SubjectsController@update')->name('mata_pelajaran.update');
     Route::delete('/delete','SubjectsController@delete')->name('mata_pelajaran.delete');
