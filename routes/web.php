@@ -47,6 +47,7 @@ Route::prefix('school')->group(function(){
   Route::prefix('absen')->group(function(){
     Route::get('/','AbsenController@index')->name('absen.index');
     Route::post('/add','AbsenController@create')->name('absen.add');
+    Route::post('/update','AbsenController@update')->name('absen.update');
     Route::delete('/delete','AbsenController@delete')->name('absen.delete');
   });
 });

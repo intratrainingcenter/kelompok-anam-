@@ -20,7 +20,6 @@ class AbsenController extends Controller
         'absen' => absensi::with('siswa')->get(),
         'siswa' => $select,
       );
-
       return view('school.absen.index',$data);
     }
     public function create(Request $request)
@@ -32,7 +31,7 @@ class AbsenController extends Controller
       $code =('KA_'.$date.$milliseconds);
       $create = absensi::create([
         'kode_absensi'  =>$code,
-        'NIS'           =>'234wdf',
+        'NIS'           =>$request->siswa,
         'tanggal'       =>$request->date,
         'absen'         =>$request->absensi,
         'keterangan'    =>$request->keterangan,
@@ -41,7 +40,13 @@ class AbsenController extends Controller
     }
     public function update(Request $request)
     {
-
+        // dd($request->all());
+        $update = absensi::where('kode_absensi','=',$request->kode_absen)->with('siswa')->first();
+        $update->update([
+          'absen' =>$request->absensi,
+          'keterangan'  =>$request->keterangan,
+        ]);
+        return redirect('school/absen')->with('update',$update->siswa->nama);
     }
     public function delete(Request $request)
     {
