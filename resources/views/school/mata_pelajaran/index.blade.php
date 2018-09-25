@@ -12,11 +12,15 @@
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
       </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
         <div class="box">
            <div class="box-header">
              <h3 class="box-title">Data Table Mata Pelajaran</h3>
              <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
-             
+
            </div>
            <!-- /.box-header -->
            <div class="box-body">
