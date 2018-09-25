@@ -1,8 +1,9 @@
-//JS class
+//set time out penampilan notifikasi
   setTimeout(function(){
     $(document).find('.alert').fadeOut('slow');
   },3000);
 
+  //JS class
   $(document).find('#example1').DataTable();
   function update(id,name,student)
   {
@@ -23,9 +24,12 @@
   function update_pelajaran(kode,kls,guru,nama)
   {
       var option ="";
-      
+
     $(document).find('.kode').val(kode);
+
+    //penambahan option pada select
       option+="<option value='"+kls+"'>"+kls+"</option>"
+
     $(document).find('.kelas').append(option);
     $(document).find('.guru').val(guru);
     $(document).find('.pelajaran').val(nama);

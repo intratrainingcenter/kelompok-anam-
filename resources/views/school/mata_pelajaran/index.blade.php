@@ -15,6 +15,8 @@
         <div class="box">
            <div class="box-header">
              <h3 class="box-title">Data Table Mata Pelajaran</h3>
+             <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
+             
            </div>
            <!-- /.box-header -->
            <div class="box-body">
@@ -43,7 +45,6 @@
                 Save Gagal kode pelajaran <strong>{{session('warning')}}</strong> sudah ada
               </div>
             @endif
-             <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
              <table id="example1" class="table table-bordered table-striped">
                <thead>
                <tr>
@@ -92,13 +93,13 @@
                 @method('POST')
                 @csrf
                {!! Form::label('', 'Kode Pelajaran') !!}
-               {!! Form::text('kode_pelajaran', '',['class' => 'form-control' ,'placeholder' => 'kode Pelajaran']) !!}
+               {!! Form::text('kode_pelajaran', '',['class' => 'form-control' ,'placeholder' => 'kode Pelajaran','required']) !!}
                {!! Form::label('', 'Kelas') !!}
-               {!! Form::select('class',$class ,null,['class' => 'form-control', 'placeholder' => 'Pilih Kelas']) !!}
+               {!! Form::select('class',$class ,null,['class' => 'form-control', 'placeholder' => 'Pilih Kelas','required']) !!}
                {!! Form::label('', 'Guru') !!}
-               {!! Form::text('nama_guru', '',['class' => 'form-control' ,'placeholder' => 'Nama Guru']) !!}
+               {!! Form::text('nama_guru', '',['class' => 'form-control' ,'placeholder' => 'Nama Guru','required']) !!}
                {!! Form::label('Pelajaran', 'Pelajaran') !!}
-               {!! Form::text('pelajaran', '',['class' => 'form-control' ,'placeholder' => 'Mata Pelajaran']) !!}
+               {!! Form::text('pelajaran', '',['class' => 'form-control' ,'placeholder' => 'Mata Pelajaran','required']) !!}
 
           </div>
             <div class="modal-footer">
@@ -132,9 +133,9 @@
                     @endforeach
                   </select>
                {!! Form::label('', 'Guru') !!}
-               {!! Form::text('nama_guru', '',['class' => 'form-control guru' ,'placeholder' => 'Nama Guru']) !!}
+               {!! Form::text('nama_guru', '',['class' => 'form-control guru' ,'placeholder' => 'Nama Guru','required']) !!}
                {!! Form::label('Pelajaran', 'Pelajaran') !!}
-               {!! Form::text('pelajaran', '',['class' => 'form-control pelajaran' ,'placeholder' => 'Mata Pelajaran']) !!}
+               {!! Form::text('pelajaran', '',['class' => 'form-control pelajaran' ,'placeholder' => 'Mata Pelajaran','required']) !!}
           </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>

@@ -15,6 +15,8 @@
         <div class="box">
            <div class="box-header">
              <h3 class="box-title">Data Table Absensi Siswa</h3>
+             <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
+             
            </div>
            <!-- /.box-header -->
            <div class="box-body">
@@ -43,7 +45,6 @@
                 Save Gagal kode pelajaran <strong>{{session('warning')}}</strong> sudah ada
               </div>
             @endif
-             <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
              <table id="example1" class="table table-bordered table-striped">
                <thead>
                <tr>
@@ -92,13 +93,13 @@
                 @method('POST')
                 @csrf
                {!! Form::label('', 'Siswa') !!}
-               {!! Form::select('siswa',$siswa ,null,['class' => 'form-control siswa', 'placeholder' => 'Pilih Siswa']) !!}
+               {!! Form::select('siswa',$siswa ,null,['class' => 'form-control siswa', 'placeholder' => 'Pilih Siswa',]) !!}
                {!! Form::label('', 'Tanggal') !!}
                {!! Form::date('date', \Carbon\Carbon::now(),['class' => 'form-control tanggal']) !!}
                {!! Form::label('', 'Absensi') !!}
-               {!! Form::select('absensi', ['Hadir' => 'Hadir', 'Izin' => 'Izin', 'Sakit' => 'Sakit', 'Alpa' => 'Alpa'], null, ['class' => 'form-control absen','placeholder' => 'Pilih absensi']) !!}
+               {!! Form::select('absensi', ['Hadir' => 'Hadir', 'Izin' => 'Izin', 'Sakit' => 'Sakit', 'Alpa' => 'Alpa'], null, ['class' => 'form-control absen','placeholder' => 'Pilih absensi','required']) !!}
                {!! Form::label('', 'Keterangan') !!}
-               {!! Form::textarea('keterangan', '',['class' => 'form-control keterangan' ,'placeholder' => 'Keterangan Kehadiran']) !!}
+               {!! Form::textarea('keterangan', '',['class' => 'form-control keterangan' ,'placeholder' => 'Keterangan Kehadiran','required']) !!}
 
           </div>
             <div class="modal-footer">

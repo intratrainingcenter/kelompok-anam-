@@ -26,9 +26,10 @@ class AbsenController extends Controller
     public function create(Request $request)
     {
       $date = date('Ymd');
+      //milisecond
       $milliseconds = round(microtime(true));
+      // create code
       $code =('KA_'.$date.$milliseconds);
-       dd(date('s'));  
       $create = absensi::create([
         'kode_absensi'  =>$code,
         'NIS'           =>'234wdf',
@@ -44,7 +45,7 @@ class AbsenController extends Controller
     }
     public function delete(Request $request)
     {
-      // dd($request->all());
+
       $delete = absensi::where('kode_absensi','=',$request->kode_absen);
       $delete->delete();
 

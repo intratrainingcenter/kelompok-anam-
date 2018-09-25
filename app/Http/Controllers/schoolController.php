@@ -3,27 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\siswa;
+use App\kelas;
+use App\mata_pelajaran;
 
 class schoolController extends Controller
 {
-    public function siswa()
+    public function dashboard()
     {
-      return view('school.siswa.siswa');
-    }
-    public function kelas()
-    {
-      return view('school.kelas.kelas');
-    }
-    public function piket()
-    {
-      return view('school.piket.piket');
-    }
-    public function mata_pelajaran()
-    {
-      return view('school.mata_pelajaran.mata_pelajaran');
-    }
-    public function absen()
-    {
-      return view('school.absen.absen');
+      $data = array(
+        'student' => siswa::count(),
+        'Class'   => kelas::count(),
+        'study'   => mata_pelajaran::count(),
+      );
+      return view('template.content',$data);
     }
 }

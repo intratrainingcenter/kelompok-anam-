@@ -15,6 +15,8 @@
       <div class="box">
          <div class="box-header">
            <h3 class="box-title">Data Table Kelas</h3>
+           <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
+           
          </div>
          <!-- /.box-header -->
          <div class="box-body">
@@ -43,7 +45,6 @@
                Save Gagal Data Kelas <strong>{{session('warning')}}</strong> Sudah Ada
               </div>
             @endif
-           <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
            <table id="example1" class="table table-bordered table-striped" >
              <thead>
              <tr>
@@ -90,9 +91,9 @@
               @method('POST')
               @csrf
              {!! Form::label('email', 'Name Class') !!}
-             {!! Form::text('name_class', '', ['class' => 'form-control', 'placeholder' => 'Name Class']) !!}
+             {!! Form::text('name_class', '', ['class' => 'form-control', 'placeholder' => 'Name Class','required']) !!}
              {!! Form::label('many_students', 'Many Students') !!}
-             {!! Form::number('total_student', '',['class' => 'form-control' ,'placeholder' => 'Many Students']) !!}
+             {!! Form::number('total_student', '',['class' => 'form-control' ,'placeholder' => 'Many Students','required']) !!}
         </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
@@ -119,9 +120,9 @@
               @csrf
              {!! Form::hidden('id_class', '', ['class' => 'form-control id_class']) !!}
              {!! Form::label('email', 'Name Class') !!}
-             {!! Form::text('name_class', '', ['class' => 'form-control name_class']) !!}
+             {!! Form::text('name_class', '', ['class' => 'form-control name_class','required']) !!}
              {!! Form::label('email', 'E-Mail Address') !!}
-             {!! Form::number('total_student', '',['class' => 'form-control total_student']) !!}
+             {!! Form::number('total_student', '',['class' => 'form-control total_student','required']) !!}
         </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>

@@ -23,9 +23,7 @@ Route::get('/test',function(){
 Route::get('/biasa', 'testpageController@index')->name('biasa');
 Route::resource('/resource', 'testpageControllerApi');
 Route::get('/middle/{param}', 'testpageController@middle')->middleware('next');
-Route::get('/Dashboard', function(){
-  return view('template.content');
-});
+Route::get('/Dashboard', 'schoolController@dashboard');
 Route::prefix('school')->group(function(){
   Route::get('/siswa','schoolController@siswa')->name('school.siswa');
   Route::prefix('kelas')->group(function(){
