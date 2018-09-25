@@ -25,7 +25,7 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
       <li class="active"><a href="/Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="{{Route('school.siswa')}}"><i class="fa fa-user"></i> Siswa</a></li>
+      <li><a href="{{Route('siswa.index')}}"><i class="fa fa-user"></i> Siswa</a></li>
       <li><a href="{{Route('kelas.index')}}"><i class="fa fa-table"></i> Kelas</a></li>
       <li><a href="{{Route('mata_pelajaran.index')}}"><i class="fa fa-list-alt"></i> Mata pelajaran</a></li>
       <li><a href="{{Route('absen.index')}}"><i class="fa fa-line-chart"></i>Absen</a></li>

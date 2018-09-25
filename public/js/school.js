@@ -56,3 +56,20 @@
     $(document).find('.siswa').val(siswa);
 
   }
+  function update_siswa( id,nama,tempat_lahir,tanggal_lahir,jenis_kelamin,alamat,agama){
+    
+    $(document).find('#id_siswa').val(id);
+    $(document).find('#nama_siswa').val(nama);
+    $(document).find('#tempat_l').val(tempat_lahir);
+    $(document).find('#tgl_lahir').val(tanggal_lahir);
+    $(document).find('#JK').val(jenis_kelamin);
+    $(document).find('#home_town').val(alamat);
+    $(document).find('#religion').val(agama);
+  }
+  function destroy_siswa(nis,nama){
+    
+    $(document).find('#NIS').val(nis);
+    $(document).find('#nama').text(nama);
+    
+
+  }
