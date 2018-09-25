@@ -5,10 +5,11 @@
   //pemanggilan DataTable di id
   $(document).find('#example1').DataTable();
   //JS class
-  function update(id,name,student)
+  function update(id,name,wali_kelas,student)
   {
     $(document).find('.id_class').val(id);
     $(document).find('.name_class').val(name);
+    $(document).find('.wali_kelas').val(wali_kelas);
     $(document).find('.total_student').val(student);
   }
 

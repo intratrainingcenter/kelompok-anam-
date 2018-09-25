@@ -53,9 +53,10 @@
             <thead>
             <tr>
               <th>No</th>
-              <th>No Class</th>
-              <th>Name Class</th>
-              <th>Total Students</th>
+              <th>No Kelas</th>
+              <th>Nama Kelas</th>
+              <th>Wali Kelas</th>
+              <th>Total Siswa</th>
               <th>Action</th>
             </tr>
             </thead>
@@ -65,11 +66,12 @@
                 <tr>
                   <td>{{$no+1}}</td>
                   <td>{{$key->kode_kls}}</td>
+                  <td>{{$key->wali_kelas}}</td>
                   <td>{{$key->nama}}</td>
                   <td>{{$key->total_siswa}}</td>
                   <td>
                     {{-- <a href="#" class="btn btn-info" title="Detail data"><i class="fa fa-info"></i></a> --}}
-                    <a onclick="update('{{$key->kode_kls}}','{{$key->nama}}','{{$key->total_siswa}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
+                    <a onclick="update('{{$key->kode_kls}}','{{$key->nama}}','{{$key->wali_kelas}}','{{$key->total_siswa}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
                     <a onclick="delete_kelas('{{$key->kode_kls}}','{{$key->nama}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
                   </td>
                 </tr>
@@ -93,10 +95,12 @@
           {!! Form::open(['route' => 'kelas.add']) !!}
               @method('POST')
               @csrf
-             {!! Form::label('email', 'Name Class') !!}
-             {!! Form::text('name_class', '', ['class' => 'form-control', 'placeholder' => 'Name Class','required']) !!}
-             {!! Form::label('many_students', 'Many Students') !!}
-             {!! Form::number('total_student', '',['class' => 'form-control' ,'placeholder' => 'Many Students','required']) !!}
+            {!! Form::label('', 'Nama Kelas') !!}
+            {!! Form::text('name_class', '', ['class' => 'form-control', 'placeholder' => 'Nama Kelas','required']) !!}
+             {!! Form::label('email', 'Wali Kelas') !!}
+             {!! Form::text('wali_kelas', '', ['class' => 'form-control', 'placeholder' => 'Nama Wali Kelas','required']) !!}
+             {!! Form::label('', 'Banyak Siswa') !!}
+             {!! Form::number('total_student', '',['class' => 'form-control' ,'placeholder' => 'Banyak Siswa','required']) !!}
         </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
@@ -124,7 +128,9 @@
              {!! Form::hidden('id_class', '', ['class' => 'form-control id_class']) !!}
              {!! Form::label('email', 'Name Class') !!}
              {!! Form::text('name_class', '', ['class' => 'form-control name_class','required']) !!}
-             {!! Form::label('email', 'E-Mail Address') !!}
+             {!! Form::label('email', 'Wali Kelas') !!}
+             {!! Form::text('wali_kelas', '', ['class' => 'form-control wali_kelas', 'placeholder' => 'Nama Wali Kelas','required']) !!}
+             {!! Form::label('', 'Total Siswa') !!}
              {!! Form::number('total_student', '',['class' => 'form-control total_student','required']) !!}
         </div>
           <div class="modal-footer">
