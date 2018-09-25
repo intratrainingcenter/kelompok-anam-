@@ -29,7 +29,7 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('template/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
   <!-- DataTables -->
- {{-- <link rel="stylesheet" href="{{('template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}"> --}}
+ <link rel="stylesheet" href="{{asset('template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}"> 
 
   <!-- {{-- <link rel="stylesheet" href="{{mix('css/app.css')}}"> --}} -->
   <!-- <link rel="stylesheet" href="{{ mix('/css/app.css') }}"> -->

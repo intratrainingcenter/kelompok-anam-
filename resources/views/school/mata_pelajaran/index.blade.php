@@ -126,7 +126,11 @@
                 @csrf
                {!! Form::hidden('kode_pelajaran', '',['class' => 'form-control kode' ,'placeholder' => 'kode Pelajaran']) !!}
                {!! Form::label('', 'Kelas') !!}
-               {!! Form::select('class',$class ,null,['class' => 'form-control kelas', 'placeholder' => 'Pilih Kelas']) !!}
+                  <select class="form-control kelas" name="class">
+                    @foreach($kelas as $kelas)
+                    <option value="{{$kelas->kode_kls}}">{{$kelas->nama}}</option>
+                    @endforeach
+                  </select>
                {!! Form::label('', 'Guru') !!}
                {!! Form::text('nama_guru', '',['class' => 'form-control guru' ,'placeholder' => 'Nama Guru']) !!}
                {!! Form::label('Pelajaran', 'Pelajaran') !!}
