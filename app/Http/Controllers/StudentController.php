@@ -10,15 +10,19 @@ class StudentController extends Controller
     {
         // dd('berhasil');
       $show = siswa::all();
+   
 
       return view('school.siswa.siswa',compact('show'));
     }
     public function store(Request $request)
-    {
-      // dd($request->all());
+    {  
+        $date = date('Ymd');
+        $milliseconds = round(microtime(true));
+        $code =($date.$milliseconds);
+        //  dd($request->all());
       $store = siswa::create([
-        'NIS'  =>str_random(5),
-        'nama'      =>$request->name_class,
+        'NIS'          =>$code,
+        'nama'         =>$request->nama_siswa,
         'tempat_lahir'=>$request->tempat_lahir,
         'tanggal_lahir'=>$request->tanggal_lahir,
         'jenis_kelamin'=>$request->jenis_kelamin,
@@ -29,18 +33,24 @@ class StudentController extends Controller
     }
     public function update(Request $request)
     {
-      $update = kelas::where('kode_kls', $request->id_class);
+        // dd($request->all());
+      $update = siswa::where('NIS', $request->id_siswa);
       $update->update([
-        'nama'      =>$request->name_class,
-        'total_siswa'=>$request->total_student,
+        'nama'         =>$request->nama_siswa,
+        'tempat_lahir'=>$request->tempat_lahir,
+        'tanggal_lahir'=>$request->tanggal_lahir,
+        'jenis_kelamin'=>$request->jenis_kelamin,
+        'alamat'=>$request->alamat,
+        'agama'=>$request->agama,
       ]);
-        return redirect('school/kelas');
+        return redirect('school/siswa');
     }
     public function delete(Request $request)
-    {
-      $delete = kelas::where('kode_kls', $request->id_class);
+    {   
+        // dd($request->all());
+      $delete = siswa::where('NIS', $request->NIS);
       $delete->delete();
 
-      return redirect('school/kelas');
+      return redirect('school/siswa');
     }
 }
