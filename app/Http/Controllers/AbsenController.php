@@ -28,7 +28,7 @@ class AbsenController extends Controller
       $date = date('Ymd');
       $milliseconds = round(microtime(true));
       $code =('KA_'.$date.$milliseconds);
-       dd(date('s'));  
+      //  dd(date('s'));  
       $create = absensi::create([
         'kode_absensi'  =>$code,
         'NIS'           =>'234wdf',
