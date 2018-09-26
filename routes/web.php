@@ -23,9 +23,7 @@ Route::get('/test',function(){
 Route::get('/biasa', 'testpageController@index')->name('biasa');
 Route::resource('/resource', 'testpageControllerApi');
 Route::get('/middle/{param}', 'testpageController@middle')->middleware('next');
-Route::get('/Dashboard', function(){
-  return view('template.content');
-});
+Route::get('/Dashboard', 'schoolController@dashboard');
 Route::prefix('school')->group(function(){
   Route::prefix('siswa')->group(function(){
     Route::get('/','StudentController@index')->name('siswa.index');
@@ -42,6 +40,7 @@ Route::prefix('school')->group(function(){
   Route::get('/piket','schoolController@piket')->name('school.piket');
   Route::prefix('mata_pelajaran')->group(function(){
     Route::get('/','SubjectsController@index')->name('mata_pelajaran.index');
+    Route::get('/callajax','SubjectsController@callajax');
     Route::post('/add','SubjectsController@create')->name('mata_pelajaran.add');
     Route::post('/update','SubjectsController@update')->name('mata_pelajaran.update');
     Route::delete('/delete','SubjectsController@delete')->name('mata_pelajaran.delete');
@@ -49,6 +48,7 @@ Route::prefix('school')->group(function(){
   Route::prefix('absen')->group(function(){
     Route::get('/','AbsenController@index')->name('absen.index');
     Route::post('/add','AbsenController@create')->name('absen.add');
+    Route::post('/update','AbsenController@update')->name('absen.update');
     Route::delete('/delete','AbsenController@delete')->name('absen.delete');
   });
 });

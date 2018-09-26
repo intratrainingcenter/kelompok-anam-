@@ -12,9 +12,15 @@
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
       </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
         <div class="box">
            <div class="box-header">
              <h3 class="box-title">Data Table Mata Pelajaran</h3>
+             <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
+
            </div>
            <!-- /.box-header -->
            <div class="box-body">
@@ -43,15 +49,14 @@
                 Save Gagal kode pelajaran <strong>{{session('warning')}}</strong> sudah ada
               </div>
             @endif
-             <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
              <table id="example1" class="table table-bordered table-striped">
                <thead>
                <tr>
                  <th>No</th>
                  <th>Kode Pelajaran</th>
                  <th>Kelas</th>
-                 <th>Guru</th>
-                 <th>Mata Pelajaran</th>
+                 <th>Guru Pengajar</th>
+                 <th>Nama Pelajaran</th>
                  <th>Action</th>
                </tr>
                </thead>
@@ -66,8 +71,8 @@
                      <td>{{$key->nama_pelajaran}}</td>
                      <td>
                        {{-- <a href="#" class="btn btn-info" title="Detail data"><i class="fa fa-info"></i></a> --}}
-                        <a onclick="update_pelajaran('{{$key->kode_pelajaran}}','{{$key->kelas->nama}}','{{$key->nama_guru}}','{{$key->nama_pelajaran}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
-                       <a onclick="destroy('{{$key->kode_pelajaran}}','{{$key->nama_pelajaran}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
+                        <a onclick="update_lessons('{{$key->kode_pelajaran}}','{{$key->kode_kls}}','{{$key->kelas->nama}}','{{$key->nama_guru}}','{{$key->nama_pelajaran}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
+                       <a onclick="delete_lessons('{{$key->kode_pelajaran}}','{{$key->nama_pelajaran}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
                      </td>
                    </tr>
                  @endforeach
@@ -85,20 +90,20 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Add Pelajaran</h4>
+            <h4 class="modal-title">Form Add</h4>
           </div>
           <div class="modal-body">
             {!! Form::open(['route' => 'mata_pelajaran.add']) !!}
                 @method('POST')
                 @csrf
                {!! Form::label('', 'Kode Pelajaran') !!}
-               {!! Form::text('kode_pelajaran', '',['class' => 'form-control' ,'placeholder' => 'kode Pelajaran']) !!}
+               {!! Form::text('kode_pelajaran', '',['class' => 'form-control' ,'placeholder' => 'kode Pelajaran','required']) !!}
                {!! Form::label('', 'Kelas') !!}
-               {!! Form::select('class',$class ,null,['class' => 'form-control', 'placeholder' => 'Pilih Kelas']) !!}
-               {!! Form::label('', 'Guru') !!}
-               {!! Form::text('nama_guru', '',['class' => 'form-control' ,'placeholder' => 'Nama Guru']) !!}
-               {!! Form::label('Pelajaran', 'Pelajaran') !!}
-               {!! Form::text('pelajaran', '',['class' => 'form-control' ,'placeholder' => 'Mata Pelajaran']) !!}
+               {!! Form::select('class',$class ,null,['class' => 'form-control', 'placeholder' => 'Pilih Kelas','required']) !!}
+               {!! Form::label('', 'Guru Pengajar') !!}
+               {!! Form::text('nama_guru', '',['class' => 'form-control' ,'placeholder' => 'Nama Guru','required']) !!}
+               {!! Form::label('Pelajaran', 'Nama Pelajaran') !!}
+               {!! Form::text('pelajaran', '',['class' => 'form-control' ,'placeholder' => 'Mata Pelajaran','required']) !!}
 
           </div>
             <div class="modal-footer">
@@ -118,7 +123,7 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Update Pelajaran</h4>
+            <h4 class="modal-title">Form Update</h4>
           </div>
           <div class="modal-body">
             {!! Form::open(['route' => 'mata_pelajaran.update']) !!}
@@ -126,15 +131,11 @@
                 @csrf
                {!! Form::hidden('kode_pelajaran', '',['class' => 'form-control kode' ,'placeholder' => 'kode Pelajaran']) !!}
                {!! Form::label('', 'Kelas') !!}
-                  <select class="form-control kelas" name="class">
-                    @foreach($kelas as $kelas)
-                    <option value="{{$kelas->kode_kls}}">{{$kelas->nama}}</option>
-                    @endforeach
-                  </select>
-               {!! Form::label('', 'Guru') !!}
-               {!! Form::text('nama_guru', '',['class' => 'form-control guru' ,'placeholder' => 'Nama Guru']) !!}
-               {!! Form::label('Pelajaran', 'Pelajaran') !!}
-               {!! Form::text('pelajaran', '',['class' => 'form-control pelajaran' ,'placeholder' => 'Mata Pelajaran']) !!}
+               {!! Form::select('kelas', [], null, ['class' => 'form-control kelas']) !!}
+               {!! Form::label('', 'Guru Pengajar') !!}
+               {!! Form::text('nama_guru', '',['class' => 'form-control guru' ,'placeholder' => 'Nama Guru','required']) !!}
+               {!! Form::label('Pelajaran', 'Nama Pelajaran') !!}
+               {!! Form::text('pelajaran', '',['class' => 'form-control pelajaran' ,'placeholder' => 'Mata Pelajaran','required']) !!}
           </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
@@ -154,7 +155,7 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Delete Pelajaran </h4>
+            <h4 class="modal-title">Form Delete</h4>
           </div>
           <div class="modal-body">
             {!! Form::open(['route' => 'mata_pelajaran.delete']) !!}
