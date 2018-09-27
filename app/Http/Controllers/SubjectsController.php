@@ -13,6 +13,7 @@ class SubjectsController extends Controller
       $class = kelas::all();
       // menandakan select sebagai array
       $select = [];
+      // foreach isi tabel kelas
       foreach($class as $departments){
           $select[$departments->kode_kls] = $departments->nama;
       }

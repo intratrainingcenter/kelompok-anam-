@@ -56,7 +56,6 @@ class AbsenController extends Controller
     //proses delete data
     public function delete(Request $request)
     {
-
       $delete = absensi::where('kode_absensi','=',$request->kode_absen);
       $delete->delete();
 

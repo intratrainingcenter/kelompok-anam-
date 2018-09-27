@@ -12,13 +12,17 @@
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       <li class="active">Dashboard</li>
     </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
       <div class="box">
          <div class="box-header">
            <h3 class="box-title">Data Table piket</h3>
+           <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
          </div>
          <!-- /.box-header -->
          <div class="box-body">
-           <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
            <table id="example1" class="table table-bordered table-striped">
              <thead>
              <tr>
@@ -43,7 +47,6 @@
            </table>
          </div>
          <!-- /.box-body -->
-       </div>
   </section>
 
   <div class="modal fade" id="add_data">
