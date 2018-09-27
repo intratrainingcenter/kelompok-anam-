@@ -35,7 +35,7 @@
                  <tr>
                    <td>{{$no++}}</td>
                    <td>{{$key->hari}}</td>
-                   <td>{{$key->siswa['nama']}}</td>
+                   <td>{{$key->student['nama']}}</td>
                    @forelse($picket_class as $class)
                    <td>{{$class->nama}}</td>
                    @empty

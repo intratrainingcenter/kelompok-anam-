@@ -20,7 +20,7 @@
             <input type="hidden" name="id_piket" id="id_piket" value="{{$picket->id}}">
           {!! Form::label('', 'Siswa') !!}
           <select class="form-control" name="siswa" id="name_student">
-            <option value="{{$picket->NIS}}">{{$picket->siswa->nama}}</option>
+            <option value="{{$picket->NIS}}">{{$picket->student->nama}}</option>
             <option value="" disabled="true">-----pilih-----</option>
             @foreach ($picket_student as $ruan)
             <option value="{{$ruan->NIS}}">{{$ruan->nama}}</option>
@@ -39,7 +39,7 @@
           </select>
           {!! Form::label('', 'kelas') !!}
           <select class="form-control" name="kelas" id="class_picket">
-            <option value="{{$picket->kode_kls}}">{{$picket->kelas->nama}}</option>
+            <option value="{{$picket->kode_kls}}">{{$picket->class->nama}}</option>
             <option value="" disabled="true">-----pilih-----</option>
             @foreach ($picket_class as $ruans)
             <option value="{{$ruans->kode_kls}}">{{$ruans->nama}}</option>

@@ -93,7 +93,7 @@
 
   //JS Siswa
   // update siswa
-  function update_siswa( id,nama,tempat_lahir,tanggal_lahir,jenis_kelamin,alamat,agama){
+  function update_student( id,nama,tempat_lahir,tanggal_lahir,jenis_kelamin,alamat,agama){
 
     $(document).find('#id_siswa').val(id);
     $(document).find('#nama_siswa').val(nama);
@@ -104,7 +104,7 @@
     $(document).find('#religion').val(agama);
   }
   // delete siswa
-  function destroy_siswa(nis,nama){
+  function destroy_student(nis,nama){
 
     $(document).find('#NIS').val(nis);
     $(document).find('#nama').text(nama);
