@@ -19,7 +19,6 @@ class SubjectsController extends Controller
       $data = array(
         'study' => mata_pelajaran::with('kelas')->get(),
         'class' => $select,
-        'kelas' =>kelas::all(),
       );
 
       return view('school.mata_pelajaran.index',$data);
@@ -41,15 +40,9 @@ class SubjectsController extends Controller
     }
     public function update(Request $request)
     {
-      // dd($request->all());
-      // $validatedData = $request->validate([
-      //     'kode_kls' => 'required',
-      //     'nama_guru' => 'required',
-      //     'nama_pelajaran' => 'required',
-      // ]);
       $find = mata_pelajaran::where('kode_pelajaran','=',$request->kode_pelajaran)->first();
       $find->update([
-        'kode_kls'        => $request->class,
+        'kode_kls'        => $request->kelas,
         'nama_guru'       => $request->nama_guru,
         'nama_pelajaran'  => $request->pelajaran,
       ]);
@@ -58,11 +51,16 @@ class SubjectsController extends Controller
     }
     public function delete(Request $request)
     {
-      // dd($request->all());
       $find = mata_pelajaran::where('kode_pelajaran','=',$request->kode_pelajaran)->first();
       $find->delete();
 
       return redirect('school/mata_pelajaran')->with('delete',$request->nama_pelajaran);
 
+    }
+    public function callajax(Request $request)
+    {
+      $data = kelas::all();
+
+      return $data;
     }
 }

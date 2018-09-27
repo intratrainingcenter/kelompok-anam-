@@ -17,6 +17,7 @@ class CreateKelasTable extends Migration
             $table->increments('id');
             $table->string('kode_kls');
             $table->string('nama');
+            $table->string('wali_kelas');
             $table->integer('total_siswa');
             $table->timestamps();
         });

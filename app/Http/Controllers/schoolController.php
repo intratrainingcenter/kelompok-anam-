@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\siswa;
 use App\kelas;
 use App\mata_pelajaran;
+
 class schoolController extends Controller
 {
     public function dashboard()

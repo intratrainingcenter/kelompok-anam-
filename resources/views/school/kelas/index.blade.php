@@ -12,69 +12,75 @@
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       <li class="active">Dashboard</li>
     </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
       <div class="box">
-         <div class="box-header">
-           <h3 class="box-title">Data Table Kelas</h3>
-         </div>
-         <!-- /.box-header -->
-         <div class="box-body">
-            @if(session('save'))
-             <div class="alert alert-info alert-dismissible fade in" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                </button>
-                Data Kelas <strong>{{session('save')}}</strong> Berhasil ditambahkan
-              </div>
-            @elseif(session('update'))
-             <div class="alert alert-info alert-dismissible fade in" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                </button>
-                Data Kelas <strong>{{session('update')}}</strong> Berhasil diupdate
-              </div>
-            @elseif(session('delete'))
-             <div class="alert alert-info alert-dismissible fade in" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                </button>
-                Data Kelas <strong>{{session('delete')}}</strong> Berhasil diHapus
-              </div>
-            @elseif(session('warning'))
-             <div class="alert alert-warning alert-dismissible fade in" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                </button>
-               Save Gagal Data Kelas <strong>{{session('warning')}}</strong> Sudah Ada
-              </div>
-            @endif
-           <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
-           <table id="example1" class="table table-bordered table-striped" >
-             <thead>
-             <tr>
-               <th>No</th>
-               <th>No Class</th>
-               <th>Name Class</th>
-               <th>Total Students</th>
-               <th>Action</th>
-             </tr>
-             </thead>
-             <tbody>
+        <div class="box-header">
+          <h3 class="box-title">Data Table Kelas</h3>
+          <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
 
-               @foreach ($show as $no => $key)
-                 <tr>
-                   <td>{{$no+1}}</td>
-                   <td>{{$key->kode_kls}}</td>
-                   <td>{{$key->nama}}</td>
-                   <td>{{$key->total_siswa}}</td>
-                   <td>
-                     {{-- <a href="#" class="btn btn-info" title="Detail data"><i class="fa fa-info"></i></a> --}}
-                     <a onclick="update('{{$key->kode_kls}}','{{$key->nama}}','{{$key->total_siswa}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
-                     <a onclick="delete_kelas('{{$key->kode_kls}}','{{$key->nama}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
-                   </td>
-                 </tr>
-               @endforeach
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+           @if(session('save'))
+            <div class="alert alert-info alert-dismissible fade in" role="alert">
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+               </button>
+               Data Kelas <strong>{{session('save')}}</strong> Berhasil ditambahkan
+             </div>
+           @elseif(session('update'))
+            <div class="alert alert-info alert-dismissible fade in" role="alert">
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+               </button>
+               Data Kelas <strong>{{session('update')}}</strong> Berhasil diupdate
+             </div>
+           @elseif(session('delete'))
+            <div class="alert alert-info alert-dismissible fade in" role="alert">
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+               </button>
+               Data Kelas <strong>{{session('delete')}}</strong> Berhasil diHapus
+             </div>
+           @elseif(session('warning'))
+            <div class="alert alert-warning alert-dismissible fade in" role="alert">
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+               </button>
+              Save Gagal Data Kelas <strong>{{session('warning')}}</strong> Sudah Ada
+             </div>
+           @endif
+          <table id="example1" class="table table-bordered table-striped" >
+            <thead>
+            <tr>
+              <th>No</th>
+              <th>No Kelas</th>
+              <th>Nama Kelas</th>
+              <th>Wali Kelas</th>
+              <th>Total Siswa</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
 
-             </tfoot>
-           </table>
-         </div>
+              @foreach ($show as $no => $key)
+                <tr>
+                  <td>{{$no+1}}</td>
+                  <td>{{$key->kode_kls}}</td>
+                  <td>{{$key->wali_kelas}}</td>
+                  <td>{{$key->nama}}</td>
+                  <td>{{$key->total_siswa}}</td>
+                  <td>
+                    {{-- <a href="#" class="btn btn-info" title="Detail data"><i class="fa fa-info"></i></a> --}}
+                    <a onclick="update_class('{{$key->kode_kls}}','{{$key->nama}}','{{$key->wali_kelas}}','{{$key->total_siswa}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
+                    <a onclick="delete_class('{{$key->kode_kls}}','{{$key->nama}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
+                  </td>
+                </tr>
+              @endforeach
+
+          </table>
+        </div>
          <!-- /.box-body -->
-       </div>
+      </div>
   </section>
 
   <div class="modal fade" id="add_data">
@@ -83,16 +89,18 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Add class</h4>
+          <h4 class="modal-title">Form Add</h4>
         </div>
         <div class="modal-body">
           {!! Form::open(['route' => 'kelas.add']) !!}
               @method('POST')
               @csrf
-             {!! Form::label('email', 'Name Class') !!}
-             {!! Form::text('name_class', '', ['class' => 'form-control', 'placeholder' => 'Name Class']) !!}
-             {!! Form::label('many_students', 'Many Students') !!}
-             {!! Form::number('total_student', '',['class' => 'form-control' ,'placeholder' => 'Many Students']) !!}
+            {!! Form::label('', 'Nama Kelas') !!}
+            {!! Form::text('name_class', '', ['class' => 'form-control', 'placeholder' => 'Nama Kelas','required']) !!}
+             {!! Form::label('email', 'Wali Kelas') !!}
+             {!! Form::text('wali_kelas', '', ['class' => 'form-control', 'placeholder' => 'Nama Wali Kelas','required']) !!}
+             {!! Form::label('', 'Total Siswa') !!}
+             {!! Form::number('total_student', '',['class' => 'form-control' ,'placeholder' => 'Banyak Siswa','required']) !!}
         </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
@@ -111,17 +119,19 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Update class</h4>
+          <h4 class="modal-title">Form Update</h4>
         </div>
         <div class="modal-body">
           {!! Form::open(['route' => 'kelas.update']) !!}
               @method('POST')
               @csrf
              {!! Form::hidden('id_class', '', ['class' => 'form-control id_class']) !!}
-             {!! Form::label('email', 'Name Class') !!}
-             {!! Form::text('name_class', '', ['class' => 'form-control name_class']) !!}
-             {!! Form::label('email', 'E-Mail Address') !!}
-             {!! Form::number('total_student', '',['class' => 'form-control total_student']) !!}
+             {!! Form::label('email', 'Nama Kelas') !!}
+             {!! Form::text('name_class', '', ['class' => 'form-control name_class','required']) !!}
+             {!! Form::label('email', 'Wali Kelas') !!}
+             {!! Form::text('wali_kelas', '', ['class' => 'form-control wali_kelas', 'placeholder' => 'Nama Wali Kelas','required']) !!}
+             {!! Form::label('', 'Total Siswa') !!}
+             {!! Form::number('total_student', '',['class' => 'form-control total_student','required']) !!}
         </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
@@ -141,7 +151,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Delete class</h4>
+          <h4 class="modal-title">Form Delete</h4>
         </div>
         <div class="modal-body">
           {!! Form::open(['route' => 'kelas.delete']) !!}
