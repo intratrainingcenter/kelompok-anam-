@@ -47,9 +47,9 @@
                    </td>
                  </tr>
                @endforeach
-              
+
              </tfoot>
-             
+
            </table>
            <a href="{{Route('piket.index')}}"><button class="btn btn-danger" type="button"><i class="fa fa-arrow-circle-left"></i> Cancle</button></a>
 			<button class="btn btn-default 	pull-right" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
@@ -128,5 +128,5 @@
     <!-- /.modal-dialog -->
   </div>
 
-                        
+
 @endsection
