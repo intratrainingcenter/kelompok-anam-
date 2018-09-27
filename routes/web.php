@@ -10,10 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('/nama/{id}', function($id){
   return $id;
 });
@@ -23,7 +19,7 @@ Route::get('/test',function(){
 Route::get('/biasa', 'testpageController@index')->name('biasa');
 Route::resource('/resource', 'testpageControllerApi');
 Route::get('/middle/{param}', 'testpageController@middle')->middleware('next');
-Route::get('/Dashboard', 'schoolController@dashboard');
+Route::get('/', 'schoolController@dashboard');
 Route::prefix('school')->group(function(){
   Route::prefix('siswa')->group(function(){
     Route::get('/','StudentController@index')->name('siswa.index');

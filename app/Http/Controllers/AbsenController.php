@@ -10,10 +10,12 @@ class AbsenController extends Controller
 {
     public function index()
     {
-      $departments = siswa::all();
+      $student = siswa::all();
+      //menandakan select, adalah array
       $select = [];
-      foreach($departments as $department){
-          $select[$department->NIS] = $department->nama;
+      // foreach isi dari tabel siswa
+      foreach($student as $departments){
+          $select[$departments->NIS] = $departments->nama;
       }
 
       $data = array(
@@ -22,6 +24,8 @@ class AbsenController extends Controller
       );
       return view('school.absen.index',$data);
     }
+
+    //proses create data
     public function create(Request $request)
     {
       $date = date('Ymd');
@@ -38,6 +42,8 @@ class AbsenController extends Controller
       ]);
       return redirect('school/absen')->with('save','siswa');
     }
+
+    //proses update data
     public function update(Request $request)
     {
         $update = absensi::where('kode_absensi','=',$request->kode_absen)->with('siswa')->first();
@@ -47,6 +53,7 @@ class AbsenController extends Controller
         ]);
         return redirect('school/absen')->with('update',$update->siswa->nama);
     }
+    //proses delete data
     public function delete(Request $request)
     {
 
