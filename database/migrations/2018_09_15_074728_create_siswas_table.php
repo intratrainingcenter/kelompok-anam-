@@ -23,6 +23,7 @@ class CreateSiswasTable extends Migration
             $table->string('alamat',100);
             $table->string('agama');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
     /**

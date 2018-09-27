@@ -11,6 +11,6 @@ class mata_pelajaran extends Model
 
      function kelas()
     {
-      return $this->belongsTo("App\kelas",'kode_kls','kode_kls');
+      return $this->belongsTo("App\kelas",'kode_kls','kode_kls')->withTrashed();
     }
 }

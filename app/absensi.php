@@ -11,6 +11,6 @@ class absensi extends Model
 
   function siswa()
  {
-   return $this->belongsTo("App\siswa",'NIS','NIS');
+   return $this->belongsTo("App\siswa",'NIS','NIS')->withTrashed();
  }
 }

@@ -10,10 +10,12 @@ class SubjectsController extends Controller
 {
     public function index()
     {
-      $departments = kelas::all();
+      $class = kelas::all();
+      // menandakan select sebagai array
       $select = [];
-      foreach($departments as $department){
-          $select[$department->kode_kls] = $department->nama;
+      // foreach isi tabel kelas
+      foreach($class as $departments){
+          $select[$departments->kode_kls] = $departments->nama;
       }
 
       $data = array(
@@ -23,9 +25,12 @@ class SubjectsController extends Controller
 
       return view('school.mata_pelajaran.index',$data);
     }
+    // fungsi proses create data
     public function create(Request $request)
     {
+      // validasi mengecek kode pelajaran sudah ada apa belum dalam tabel
       $validation = mata_pelajaran::where('kode_pelajaran','=',$request->kode_pelajaran)->first();
+      //jika kode pelajaran ada dia malakukan eksecute create data
       if ($validation == null) {
           $save = mata_pelajaran::create([
             'kode_pelajaran'  => $request->kode_pelajaran,
@@ -38,6 +43,7 @@ class SubjectsController extends Controller
           return redirect('school/mata_pelajaran')->with('warning',$request->kode_pelajaran);
         }
     }
+    //proses update data
     public function update(Request $request)
     {
       $find = mata_pelajaran::where('kode_pelajaran','=',$request->kode_pelajaran)->first();
@@ -49,6 +55,7 @@ class SubjectsController extends Controller
       return redirect('school/mata_pelajaran')->with('update',$request->pelajaran);
 
     }
+    // proses delete data
     public function delete(Request $request)
     {
       $find = mata_pelajaran::where('kode_pelajaran','=',$request->kode_pelajaran)->first();
@@ -57,6 +64,7 @@ class SubjectsController extends Controller
       return redirect('school/mata_pelajaran')->with('delete',$request->nama_pelajaran);
 
     }
+    //proses show data kelas menggunakan ajax
     public function callajax(Request $request)
     {
       $data = kelas::all();

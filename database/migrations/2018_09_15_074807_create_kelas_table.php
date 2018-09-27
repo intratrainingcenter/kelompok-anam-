@@ -20,6 +20,7 @@ class CreateKelasTable extends Migration
             $table->string('wali_kelas');
             $table->integer('total_siswa');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

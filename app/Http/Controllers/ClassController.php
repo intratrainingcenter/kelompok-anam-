@@ -13,6 +13,8 @@ class ClassController extends Controller
 
       return view('school.kelas.index',compact('show'));
     }
+
+    // proses create data
     public function store(Request $request)
     {
       $validation = kelas::where('nama','=',$request->name_class)->first();
@@ -31,6 +33,8 @@ class ClassController extends Controller
           return redirect('school/kelas')->with('warning',$request->name_class);
       }
     }
+
+    // proses update data
     public function update(Request $request)
     {
       $update = kelas::where('kode_kls', $request->id_class);
@@ -41,6 +45,8 @@ class ClassController extends Controller
       ]);
         return redirect('school/kelas')->with('update',$request->name_class);
     }
+
+    // proses delete data
     public function delete(Request $request)
     {
       $delete = kelas::where('kode_kls', $request->id_class);

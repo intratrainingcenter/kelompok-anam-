@@ -38,7 +38,7 @@
         }).done(function (data) {
 
             option_value+="<option value='"+code_kls+"'>"+kls+"</option><option value=''>Pilih Kelas</option>"
-            
+
             //foreach data kelas
             $.each(data, function(index,result){
               option+="<option value='"+result.kode_kls+"'>"+result.nama+"</option>";
@@ -46,7 +46,7 @@
 
             //penambahan option pada select sesuai find class
           $(document).find('.kelas').html(option_value+option);
-        //pemberihatuan jika reques gagal
+        //pemberihatuan jika request gagal
         }).fail(function (data) {
           console.log(data);
           console.log("error");
@@ -93,7 +93,7 @@
 
   //JS Siswa
   // update siswa
-  function update_siswa( id,nama,tempat_lahir,tanggal_lahir,jenis_kelamin,alamat,agama){
+  function update_student( id,nama,tempat_lahir,tanggal_lahir,jenis_kelamin,alamat,agama){
 
     $(document).find('#id_siswa').val(id);
     $(document).find('#nama_siswa').val(nama);
@@ -104,10 +104,16 @@
     $(document).find('#religion').val(agama);
   }
   // delete siswa
-  function destroy_siswa(nis,nama){
+  function destroy_student(nis,nama){
 
     $(document).find('#NIS').val(nis);
     $(document).find('#nama').text(nama);
+  }
+
+  // JS piket
+  function destroy_pikcet(day){
+    $(document).find('#day_picket_delete').val(day);
+    $(document).find('#hari').text(day);
 
 
   }

@@ -12,13 +12,18 @@
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       <li class="active">Dashboard</li>
     </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
       <div class="box">
          <div class="box-header">
            <h3 class="box-title">Data Table Siswa</h3>
+           <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
          </div>
+
          <!-- /.box-header -->
          <div class="box-body">
-           <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
            <table id="example1" class="table table-bordered table-striped">
              <thead>
              <tr>
@@ -47,8 +52,8 @@
                    <td>{{$key->agama}}</td>
                    <td>
                      {{-- <a href="#" class="btn btn-info" title="Detail data"><i class="fa fa-info"></i></a> --}}
-                     <a onclick="update_siswa('{{$key->NIS}}','{{$key->nama}}','{{$key->tempat_lahir}}','{{$key->tanggal_lahir}}','{{$key->jenis_kelamin}}','{{$key->alamat}}','{{$key->agama}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
-                     <a onclick="destroy_siswa('{{$key->NIS}}','{{$key->nama}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
+                     <a onclick="update_student('{{$key->NIS}}','{{$key->nama}}','{{$key->tempat_lahir}}','{{$key->tanggal_lahir}}','{{$key->jenis_kelamin}}','{{$key->alamat}}','{{$key->agama}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
+                     <a onclick="destroy_student('{{$key->NIS}}','{{$key->nama}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
                    </td>
                  </tr>
                @endforeach
