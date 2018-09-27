@@ -29,7 +29,7 @@
              </thead>
              <tbody>
 
-               @foreach ($piket as $no => $key)
+               @foreach ($picket as $no => $key)
                  <tr>
                    <td>{{$no+1}}</td>
                    <td>{{$key->hari}}</td>
@@ -59,15 +59,22 @@
               @method('POST')
           {!! Form::label('', 'Siswa') !!}
           <select class="form-control" name="siswa">
-          @foreach ($piket2 as $ruan)
+          @foreach ($picket_student as $ruan)
             <option value="{{$ruan->NIS}}">{{$ruan->nama}}</option>
             @endforeach
           </select>
           {!! Form::label('hari', 'Hari') !!}
-          {!! Form::date('hari', null, array('placeholder' => 'hari','class' => 'form-control')) !!}
+          <select class="form-control" name="hari" id="day_picket">
+            <option value="Senin">Senin</option>
+            <option value="Selasa">Selasa</option>
+            <option value="Rabu">Rabu</option>
+            <option value="Kamis">Kamis</option>
+            <option value="Jumat">Jumat</option>
+            <option value="Sabtu">Sabtu</option>
+          </select>
           {!! Form::label('', 'kelas') !!}
           <select class="form-control" name="kelas" id="">
-          @foreach ($piket3 as $ruans)
+          @foreach ($picket_class as $ruans)
             <option value="{{$ruans->kode_kls}}">{{$ruans->nama}}</option>
             @endforeach
           </select>

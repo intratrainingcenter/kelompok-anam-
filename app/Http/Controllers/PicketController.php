@@ -12,9 +12,9 @@ class PicketController extends Controller
 {
     public function index()
     {
-      $piket = piket::with(['siswa'])->get();
-      $piket2 = siswa::all();
-      $piket3 = kelas::all();
+      $picket = piket::with(['siswa'])->get();
+      $picket_student = siswa::all();
+      $picket_class = kelas::all();
 
       // dd($piket2);
 
@@ -34,14 +34,14 @@ class PicketController extends Controller
       //   'siswa' => $select,
       //   'kelas' => $select,
       // );
-      return view('school.piket.index', compact('piket', 'piket2', 'piket3'));
+      return view('school.piket.index', compact('picket','picket_student','picket_class'));
     }
     public function detail(){
-      $piket = piket::with(['siswa','kelas'])->get();
+      $picket = piket::with(['siswa','kelas'])->get();
       // dd($piket);
-      $piket2 = siswa::all();
-      $piket3 = kelas::all();
-      return view('school.piket.detail', compact('piket','piket2','piket3'));
+      $picket_student = siswa::all();
+      $picket_class = kelas::all();
+      return view('school.piket.detail', compact('picket','picket_student','picket_class'));
     }
     public function store(Request $request)
     {  

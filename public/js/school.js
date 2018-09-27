@@ -67,14 +67,14 @@
     $(document).find('#NIS').val(nis);
     $(document).find('#nama').text(nama);
   }
-  function update_piket(Id,name,day,class_piket){
+  function update_pikcet(Id,name,day,class_piket){
     $(document).find('#id_piket').val(Id);
     $(document).find('#name_student').val(name);
     $(document).find('#day_picket').val(day);
     $(document).find('#class_picket').val(class_piket);
   }
-  function update_piket(day,hari){
+  function destroy_pikcet(day){
     $(document).find('#day_picket_delete').val(day);
-    $(document).find('#hari').val(hari);
+    $(document).find('#hari').text(day);
 
   }
