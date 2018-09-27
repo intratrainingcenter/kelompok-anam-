@@ -21,7 +21,7 @@ class CreateSiswasTable extends Migration
             $table->date('tanggal_lahir');
             $table->enum('jenis_kelamin', ['laki-laki','perempuan']);
             $table->string('alamat',100);
-            $table->srtring('agama');
+            $table->string('agama');
             $table->timestamps();
         });
     }
