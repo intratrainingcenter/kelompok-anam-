@@ -52,8 +52,8 @@
                    <td>{{$key->agama}}</td>
                    <td>
                      {{-- <a href="#" class="btn btn-info" title="Detail data"><i class="fa fa-info"></i></a> --}}
-                     <a onclick="update_siswa('{{$key->NIS}}','{{$key->nama}}','{{$key->tempat_lahir}}','{{$key->tanggal_lahir}}','{{$key->jenis_kelamin}}','{{$key->alamat}}','{{$key->agama}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
-                     <a onclick="destroy_siswa('{{$key->NIS}}','{{$key->nama}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
+                     <a onclick="update_student('{{$key->NIS}}','{{$key->nama}}','{{$key->tempat_lahir}}','{{$key->tanggal_lahir}}','{{$key->jenis_kelamin}}','{{$key->alamat}}','{{$key->agama}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
+                     <a onclick="destroy_student('{{$key->NIS}}','{{$key->nama}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
                    </td>
                  </tr>
                @endforeach
