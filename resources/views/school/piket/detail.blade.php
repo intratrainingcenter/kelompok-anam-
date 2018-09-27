@@ -8,8 +8,6 @@
 <div class="row btnPrint">
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
-            <a href="{{Route('piket.index')}}"><button class="btn btn-danger" type="button"><i class="fa fa-arrow-circle-left"></i> Cancle</button></a>
-			<button class="btn btn-default 	pull-right" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
 		</div>
 	</div>
 </div>
@@ -19,7 +17,6 @@
                     <small class="pull-right">Date: {{ date('d,M Y') }} </small>
                     <br>
                     <div class="box-body">
-           <button type="button" name="button" class="btn btn-primary pull-right" title="Tambah Data" data-toggle="modal" data-target="#add_data"><i class="fa fa-plus"></i> Add Data</button>
            <table id="example1" class="table table-bordered table-striped">
              <thead>
              <tr>
@@ -34,25 +31,28 @@
             @php
             $no = 1;
             @endphp
-               @foreach ($piket as $key)
+               @foreach ($picket as $key)
                  <tr>
                    <td>{{$no++}}</td>
                    <td>{{$key->hari}}</td>
                    <td>{{$key->siswa['nama']}}</td>
-                   @forelse($piket3 as $ruang)
-                   <td>{{$ruang->nama}}</td>
+                   @forelse($picket_class as $class)
+                   <td>{{$class->nama}}</td>
                    @empty
                    <p>belum ada kelas</p>
                    @endforelse
                    <td>
-                   <a onclick="update_piket('{{$key->hari}}','{{$key->siswa['nama']}}','{{$ruang->nama}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
-                <a onclick="destroy_piket('{{$key->hari}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
+                   <a href="/school/piket/Show_update/{{$key->hari}}" class="btn btn-warning" title="Edit data" ><i class="fa fa-pencil"></i></a>
+                <a onclick="destroy_pikcet('{{$key->hari}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
                    </td>
                  </tr>
                @endforeach
-                
+              
              </tfoot>
+             
            </table>
+           <a href="{{Route('piket.index')}}"><button class="btn btn-danger" type="button"><i class="fa fa-arrow-circle-left"></i> Cancle</button></a>
+			<button class="btn btn-default 	pull-right" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
          </div>
     </div>
     <div class="modal fade" id="update_data">
@@ -70,15 +70,22 @@
               <input type="hidden" name="id_piket" id="id_piket">
           {!! Form::label('', 'Siswa') !!}
           <select class="form-control" name="siswa" id="name_student">
-          @foreach ($piket2 as $ruan)
+          @foreach ($picket_student as $ruan)
             <option value="{{$ruan->NIS}}">{{$ruan->nama}}</option>
             @endforeach
           </select>
           {!! Form::label('hari', 'Hari') !!}
-          {!! Form::date('hari', null, array('placeholder' => 'hari','class' => 'form-control','id' => 'day_picket')) !!}
+          <select class="form-control" name="hari" id="day_picket">
+            <option value="Senin">Senin</option>
+            <option value="Selasa">Selasa</option>
+            <option value="Rabu">Rabu</option>
+            <option value="Kamis">Kamis</option>
+            <option value="Jumat">Jumat</option>
+            <option value="Sabtu">Sabtu</option>
+          </select>
           {!! Form::label('', 'kelas') !!}
           <select class="form-control" name="kelas" id="class_picket">
-          @foreach ($piket3 as $ruans)
+          @foreach ($picket_class as $ruans)
             <option value="{{$ruans->kode_kls}}">{{$ruans->nama}}</option>
             @endforeach
           </select>
