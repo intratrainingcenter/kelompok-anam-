@@ -17,6 +17,7 @@ class CreatePiketsTable extends Migration
             $table->increments('id');
             $table->string('NIS');
             $table->string('hari');
+            $table->string('kode_kls');
             $table->timestamps();
         });
     }

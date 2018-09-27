@@ -10,7 +10,7 @@ class StudentController extends Controller
     {
       $show = siswa::all();  
 
-      return view('school.siswa.siswa',compact('show'));
+      return view('school.siswa.index',compact('show'));
     }
     public function store(Request $request)
     {  

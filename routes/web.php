@@ -37,7 +37,13 @@ Route::prefix('school')->group(function(){
     Route::Post('/update','ClassController@update')->name('kelas.update');
     Route::delete('/delete','ClassController@delete')->name('kelas.delete');
   });
-  Route::get('/piket','schoolController@piket')->name('school.piket');
+  Route::prefix('piket')->group(function(){
+    Route::get('/','PicketController@index')->name('piket.index');
+    Route::Post('/add','PicketController@store')->name('piket.add');
+    Route::Post('/update','PicketController@update')->name('piket.update');
+    Route::delete('/delete','PicketController@delete')->name('piket.delete');
+    Route::get('/detail','PicketController@detail')->name('piket.detail');
+  });
   Route::prefix('mata_pelajaran')->group(function(){
     Route::get('/','SubjectsController@index')->name('mata_pelajaran.index');
     Route::get('/callajax','SubjectsController@callajax');
