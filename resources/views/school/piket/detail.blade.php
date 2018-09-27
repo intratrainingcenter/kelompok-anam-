@@ -42,7 +42,7 @@
                    <p>belum ada kelas</p>
                    @endforelse
                    <td>
-                   <a onclick="update_pikcet('{{$key->hari}}','{{$key->siswa['nama']}}','{{$class->nama}}')" class="btn btn-warning" title="Edit data" data-toggle="modal" data-target="#update_data"><i class="fa fa-pencil"></i></a>
+                   <a href="/school/piket/Show_update/{{$key->hari}}" class="btn btn-warning" title="Edit data" ><i class="fa fa-pencil"></i></a>
                 <a onclick="destroy_pikcet('{{$key->hari}}')" class="btn btn-danger" title="Hapus data" data-toggle="modal" data-target="#delete_data"><i class="fa fa-trash-o"></i></a>
                    </td>
                  </tr>

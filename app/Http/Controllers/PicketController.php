@@ -57,8 +57,8 @@ class PicketController extends Controller
     }
     public function update(Request $request)
     {
-        //dd($request->all());
-      $update = piket::where('NIS', $request->id_piket);
+        // dd($request);
+      $update = piket::where('id', $request->id_piket);
       $update->update([
         'NIS'         =>$request->siswa,
         'hari'         =>$request->hari,
@@ -73,5 +73,14 @@ class PicketController extends Controller
       $delete->delete();
 
       return redirect('school/piket/detail');
+    }
+    public function show_update_data($id){
+
+      $picket = piket::where('hari','=',$id)->with(['siswa','kelas'])->first();
+      // dd($picket); 
+      $picket_student = siswa::all();
+      $picket_class = kelas::all();
+      
+      return view('school.piket.edit',compact('picket','picket_student','picket_class'));
     }
 }

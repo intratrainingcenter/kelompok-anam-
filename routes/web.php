@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PicketController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +42,7 @@ Route::prefix('school')->group(function(){
   Route::prefix('piket')->group(function(){
     Route::get('/','PicketController@index')->name('piket.index');
     Route::Post('/add','PicketController@store')->name('piket.add');
+    Route::get('/Show_update/{id}','PicketController@show_update_data');
     Route::Post('/update','PicketController@update')->name('piket.update');
     Route::delete('/delete','PicketController@delete')->name('piket.delete');
     Route::get('/detail','PicketController@detail')->name('piket.detail');
